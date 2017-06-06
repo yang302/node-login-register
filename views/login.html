@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet" media='screen'>
+    <style>
+        .m15 {
+            margin: 15PX;
+        }
+        
+        .tc {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+        
+        @media screen and (min-width:768px) {
+            form {
+                width: 400px !important;
+                margin: 0 auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <%- message %>
+            <form class="form-horizontal" role="form" method="post" onsubmit="return false">
+                <fieldset>
+                    <legend></legend>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <p class="tc">请先登录</p>
+                        </div>
+                        <div class="panel-body m15">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    </span>
+                                    <input type="text" class="form-control" id='username' name="username" placeholder="请输入用户名" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-lock"></span>
+                                    </span>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block" id="login0">登录</button>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-info col-sm-2 col-sm-offset-10" id="register0">注册</button>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+    </div>
+
+    <script src="javascripts/jquery.min.js"></script>
+    <script src="javascripts/bootstrap.min.js"></script>
+    <script>
+        $(function() {
+            $('#register0').click(function() {
+                location.href = 'register';
+            });
+            $('#login0').click(function() {
+                var username = $('#username').val();
+                var password = $('#password').val();
+                var data = {
+                    'uname': username,
+                    'upwd': password
+                };
+                $.ajax({
+                    url: '/login',
+                    type: 'post',
+                    data: data,
+                    success: function(data, status) {
+                        if (status == 'success') {
+                            location.href = 'home';
+                        }
+                    },
+                    error: function(data, status) {
+                        if (status == 'error') {
+                            location.href = 'login';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
