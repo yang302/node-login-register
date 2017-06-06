@@ -7,7 +7,6 @@ node+express+mongodb实现的一个用户登录、注册系统。
 使用技术：
 node+express+mongodb
 
-express中用session来保存用户信息
 
 # 项目使用步骤
 1，git clone到本地
