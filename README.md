@@ -1,14 +1,13 @@
 # node-login-register
-this is a  system of login and register!
+node+express+mongodb实现的一个用户登录、注册系统。
 
 # 项目介绍
-本项目包含： 电影首页，电影录入页，电影列表页，电影详情页。
+本项目包含： 首页，登录页，注册页，登出。
 
 使用技术：
-node+express+ejs+mongodb+es6
+node+express+mongodb
 
-插件：
-其中时间格式化使用moment插件
+express中用session来保存用户信息
 
 # 项目使用步骤
 1，git clone到本地
